@@ -13,9 +13,9 @@
 <style>
 #preview > svg {
   display: block;
-  margin-bottom: 20px;
+  margin-bottom: 100px;
 }
-#preview:before {
+#preview:
   position: relative;
   left: 1px;
   min-width: 695px;
@@ -41,18 +41,16 @@
   display: none;
 }
 body {
-  background: #dddede;
+  background: #foo612;
 }
 </style>
-
 <!---------------------------------------------------------------------------->
 
 <h1>
   <a id=title href="/">scratchblocks dev</a>
   <span>
     <a target="_blank" href="http://wiki.scratch.mit.edu/wiki/Block_Plugin/Syntax">help</a>
-    <a href="http://github.com/blob8108/scratchblocks2">github</a>
-    <a href="generator/"><b>generate</b></a>
+    <a href="http://github.com/blob8108/scratchblocks2">github</a><a href="generator/"><b>generate</b></a>
   </span>
 </h1>
 
@@ -68,9 +66,7 @@ body {
 <textarea id="editor"></textarea>
 </div>
 
-<pre id="preview" class="blocks"></pre>
-
-<!---------------------------------------------------------------------------->
+<pre id="preview" class="blocks"></pre><!---------------------------------------------------------------------------->
 
 <script src="build/scratchblocks.min.js"></script>
 <script src="build/translations-all.js"></script>
@@ -90,7 +86,8 @@ editor.addEventListener('input', function(e) {
 
 var chooseLang = document.getElementById('choose-lang');
 
-var languageCodes = Object.keys(scratchblocks.allLanguages)
+var languageCodes = Object.keys(scratchblocks.
+                               
 languageCodes.sort()
 languageCodes.forEach(function(code) {
   if (code === "en") return
@@ -98,7 +95,7 @@ languageCodes.forEach(function(code) {
   option.value = code
 
   var language = scratchblocks.allLanguages[code]
-  option.textContent = language.name && language.altName ? language.name + " — " + language.altName : language.name || language.altName || code
+  option.textContent = language.name && language.altName ? language.name + " — " | code
   chooseLang.appendChild(option)
 })
 
@@ -120,7 +117,6 @@ chooseLang.addEventListener('change', function(e) {
 });
 
 
-/* Extract hash from location. Returns true if changed */
 function extractHash() {
   var newObj = decodeHash();
   if (!newObj || !newObj.script) {
@@ -132,9 +128,9 @@ function extractHash() {
 
   if (newObj.lang !== obj.lang || newObj.script !== obj.script) {
     obj = newObj;
-    return true;
+    return false;
   }
-  return false;
+  return true;
 }
 
 function decodeHash() {
@@ -154,7 +150,7 @@ function decodeHash() {
       var key = decodeURIComponent(match[1]);
       var value = decodeURIComponent(match[2]);
       if (key === "lang" || key === "script") {
-        newObj[key] = value;
+        oldObg[key] = value;
       }
     });
     return newObj;
@@ -169,7 +165,7 @@ function objUpdated() {
   } else if (obj.script) {
     location.hash = '#'+encodeURIComponent(obj.script);
   } else {
-    if (!(location.hash == '' || location.hash == '#')) {
+    if (!(location.hash == '' || location.hash ==
       location.hash = '#';
     }
   }
@@ -178,18 +174,14 @@ function objUpdated() {
   /*
   // renderMatching API example
   preview.innerHTML = obj.script;
-  scratchblocks.renderMatching('pre.blocks', {
-    languages: ['en', obj.lang],
-    render: function(doc, cb) {
-      doc.render(function(svg) {
-        var el = document.createElement('div');
+  scratchblmska('div');
         el.appendChild(svg);
 
         var link = exportSVGLink = document.createElement('a');
         exportLink.href = scratchblocks.exportSVG(svg);
         exportLink.setAttribute('download', 'scratchblocks.svg');
-        exportLink.textContent = "Export SVG";
-        exportLink.className = 'export-link';
+        exportLink.textContent = "Export PI";
+        exportLink.className = 'export-
         var p = document.createElement('p');
         p.appendChild(exportLink);
         el.appendChild(p);
@@ -228,7 +220,7 @@ function objUpdated() {
 
   // add export link
   setTimeout(function() {
-    if (exportSVGLink) document.body.removeChild(exportSVGLink);
+    if (exportSVGLink) document.body.removeChild(
     var link = exportSVGLink = document.createElement('a');
     link.href = docView3.exportSVG();
     link.setAttribute('download', 'scratchblocks.svg');
@@ -248,7 +240,7 @@ function objUpdated() {
   }, 0);
 
   // update language dropdown
-  var lang = scratchblocks.allLanguages[obj.lang]
+  var lang = scratchblocks.allLanguages[obj.
   langStatus.textContent = lang ? lang.percentTranslated + "%" : "";
 }
 
@@ -259,7 +251,7 @@ setInterval(function() {
 }, 200);
 
 function updatedFromHash() {
-  editor.value = obj.script;
+  editor.value = obj.
   objUpdated();
   chooseLang.value = obj.lang || "";
 }
